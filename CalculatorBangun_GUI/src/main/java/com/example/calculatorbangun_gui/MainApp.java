@@ -17,6 +17,7 @@ public class MainApp extends Application {
     private TextField SisiField;
     private TextField PanjangField;
     private TextField LebarField;
+    private TextField TinggiField;
 
     @Override
     public void start(Stage primaryStage) {
@@ -304,7 +305,7 @@ public class MainApp extends Application {
 
         btnHitung.setOnAction(e -> hitungLuasPersegiPanjang());
         btnHistory.setOnAction(e -> showHistory());
-        btnKembali.setOnAction(e -> showKubus());
+        btnKembali.setOnAction(e -> showPersegiPanjang());
 
         Scene scene = new Scene(grid, 400, 300);
         primaryStage.setScene(scene);
@@ -322,7 +323,7 @@ public class MainApp extends Application {
             alert.setHeaderText(null);
             alert.setContentText(result);
             alert.show();
-            saveHistory("Luas PersegiPanjang - Panjang: " + panjang + "& Luas: "+ lebar+ " -> Volume: " + luas);
+            saveHistory("Luas PersegiPanjang - Panjang: " + panjang + " & Luas: "+ lebar+ " -> Volume: " + luas);
             // Add result to history list
             historyList.add(result);
         } catch (NumberFormatException ex) {
@@ -339,13 +340,13 @@ public class MainApp extends Application {
 
         Label PanjangLabel = new Label("Panjang:");
         grid.add(PanjangLabel, 0, 1);
-        JarijariField = new TextField();
-        grid.add(JarijariField, 1, 1);
+        PanjangField = new TextField();
+        grid.add(PanjangField, 1, 1);
 
         Label LebarLabel = new Label("lebar:");
         grid.add(LebarLabel, 0, 2);
-        JarijariField = new TextField();
-        grid.add(JarijariField, 1, 2);
+        LebarField = new TextField();
+        grid.add(LebarField, 1, 2);
 
         Button btnKembali = new Button("Kembali");
         Button btnHitung = new Button("Hitung Keliling");
@@ -358,7 +359,7 @@ public class MainApp extends Application {
 
         btnHitung.setOnAction(e -> hitungKelilingPersegiPanjang());
         btnHistory.setOnAction(e -> showHistory());
-        btnKembali.setOnAction(e -> showKubus());
+        btnKembali.setOnAction(e -> showPersegiPanjang());
 
         Scene scene = new Scene(grid, 400, 300);
         primaryStage.setScene(scene);
@@ -376,7 +377,7 @@ public class MainApp extends Application {
             alert.setHeaderText(null);
             alert.setContentText(result);
             alert.show();
-            saveHistory("Keliling PersegPanjang - Panjang: " + panjang + "& Luas: "+ lebar+ " -> Volume: " + luas);
+            saveHistory("Keliling PersegPanjang - Panjang: " + panjang + " & Luas: "+ lebar+ " -> Volume: " + luas);
             // Add result to history list
             historyList.add(result);
         } catch (NumberFormatException ex) {
@@ -408,7 +409,7 @@ public class MainApp extends Application {
 
         btnHitung.setOnAction(e -> hitungLuasLingkaran());
         btnHistory.setOnAction(e -> showHistory());
-        btnKembali.setOnAction(e -> showKubus());
+        btnKembali.setOnAction(e -> showLingkaran());
 
         Scene scene = new Scene(grid, 400, 300);
         primaryStage.setScene(scene);
@@ -416,8 +417,8 @@ public class MainApp extends Application {
     public void hitungLuasLingkaran(){
         try {
             double jariJari = Double.parseDouble(JarijariField.getText());
-            double luas = (2 * Math.PI * jariJari);
-            String result = String.format("Volume of the sphere with radius %.2f is %.2f", jariJari, luas);
+            double luas = (Math.PI * jariJari * jariJari);
+            String result = String.format("Luas dari Lingkaran dengan Jarijari : %.2f adalah %.2f", jariJari, luas);
 
             // Display the result
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -425,11 +426,11 @@ public class MainApp extends Application {
             alert.setHeaderText(null);
             alert.setContentText(result);
             alert.show();
-            saveHistory("Volume Bola - Radius: " + jariJari + " -> Volume: " + luas);
+            saveHistory("Keliling Lingkaran - Jari-jari: " + jariJari + " -> Keliling: " + luas);
             // Add result to history list
             historyList.add(result);
         } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "Please enter a valid number for the radius.");
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
         }
     }
     private void KelilingLingkaran(){
@@ -447,7 +448,7 @@ public class MainApp extends Application {
         grid.add(JarijariField, 1, 1);
 
         Button btnKembali = new Button("Kembali");
-        Button btnHitung = new Button("Hitung Volume");
+        Button btnHitung = new Button("Hitung Keliling");
         Button btnHistory = new Button("Show History");
 
         grid.add(btnHitung, 0, 2, 2, 1);
@@ -455,18 +456,18 @@ public class MainApp extends Application {
         grid.add(btnKembali, 0, 4);
 
 
-        btnHitung.setOnAction(e -> hitungKelilingKubus());
+        btnHitung.setOnAction(e -> hitungKelilingLingkaran());
         btnHistory.setOnAction(e -> showHistory());
-        btnKembali.setOnAction(e -> showKubus());
+        btnKembali.setOnAction(e -> showLingkaran());
 
         Scene scene = new Scene(grid, 400, 300);
         primaryStage.setScene(scene);
     }
     public void hitungKelilingLingkaran(){
         try {
-            double radius = Double.parseDouble(JarijariField.getText());
-            double volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
-            String result = String.format("Volume of the sphere with radius %.2f is %.2f", radius, volume);
+            double jariJari = Double.parseDouble(JarijariField.getText());
+            double keliling = (2 * Math.PI * jariJari);
+            String result = String.format("Keliling dari Lingkaran dengan Jarijari : %.2f adalah %.2f", jariJari, keliling);
 
             // Display the result
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -474,11 +475,11 @@ public class MainApp extends Application {
             alert.setHeaderText(null);
             alert.setContentText(result);
             alert.show();
-            saveHistory("Volume Bola - Radius: " + radius + " -> Volume: " + volume);
+            saveHistory("Keliling Lingkaran - Jari-jari: " + jariJari + " -> Keliling: " + keliling);
             // Add result to history list
             historyList.add(result);
         } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "Please enter a valid number for the radius.");
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
         }
     }
 
@@ -494,8 +495,8 @@ public class MainApp extends Application {
         grid.setVgap(5);
 
 
-        btnVolume.setOnAction(e -> hitungVolumeKubus());
-        btnKeliling.setOnAction(e -> hitungKelilingKubus());
+        btnVolume.setOnAction(e -> VolumeKubus());
+        btnKeliling.setOnAction(e -> KelilingKubus());
         btnKembali.setOnAction(e -> menuBangunRuang());
 
 
@@ -520,8 +521,8 @@ public class MainApp extends Application {
         grid.setVgap(5);
 
 
-        btnVolume.setOnAction(e -> hitungVolumeBalok());
-        btnKeliling.setOnAction(e -> hitungKelilingBalok());
+        btnVolume.setOnAction(e -> VolumeBalok());
+        btnKeliling.setOnAction(e -> KelilingBalok());
         btnKembali.setOnAction(e -> menuBangunRuang());
 
         grid.add(btnVolume, 1, 0);
@@ -565,11 +566,11 @@ public class MainApp extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        Label JarijariLabel = new Label("Jarijari:");
-        grid.add(JarijariLabel, 0, 1);
+        Label SisiLabel = new Label("Sisi:");
+        grid.add(SisiLabel, 0, 1);
 
-        JarijariField = new TextField();
-        grid.add(JarijariField, 1, 1);
+        SisiField = new TextField();
+        grid.add(SisiField, 1, 1);
 
         Button btnKembali = new Button("Kembali");
         Button btnHitung = new Button("Hitung Volume");
@@ -589,9 +590,9 @@ public class MainApp extends Application {
     }
     public void hitungVolumeKubus(){
         try {
-            double radius = Double.parseDouble(JarijariField.getText());
-            double volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
-            String result = String.format("Volume of the sphere with radius %.2f is %.2f", radius, volume);
+            double sisi = Double.parseDouble(SisiField.getText());
+            double volume = sisi*sisi*sisi;
+            String result = String.format("Volume Kubus dengan Sisi %.2f Adalah %.2f", sisi, volume);
 
             // Display the result
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -599,11 +600,11 @@ public class MainApp extends Application {
             alert.setHeaderText(null);
             alert.setContentText(result);
             alert.show();
-            saveHistory("Volume Bola - Radius: " + radius + " -> Volume: " + volume);
+            saveHistory("Volume Kubus - Sisi: " + sisi + " -> Volume: " + volume);
             // Add result to history list
             historyList.add(result);
         } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "Please enter a valid number for the radius.");
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
         }
     }
     private void KelilingKubus(){
@@ -614,14 +615,14 @@ public class MainApp extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        Label JarijariLabel = new Label("Jarijari:");
+        Label JarijariLabel = new Label("Sisi:");
         grid.add(JarijariLabel, 0, 1);
 
-        JarijariField = new TextField();
-        grid.add(JarijariField, 1, 1);
+        SisiField = new TextField();
+        grid.add(SisiField, 1, 1);
 
         Button btnKembali = new Button("Kembali");
-        Button btnHitung = new Button("Hitung Volume");
+        Button btnHitung = new Button("Hitung Keliling");
         Button btnHistory = new Button("Show History");
 
         grid.add(btnHitung, 0, 2, 2, 1);
@@ -638,9 +639,9 @@ public class MainApp extends Application {
     }
     public void hitungKelilingKubus(){
         try {
-            double radius = Double.parseDouble(JarijariField.getText());
-            double volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
-            String result = String.format("Volume of the sphere with radius %.2f is %.2f", radius, volume);
+            double sisi = Double.parseDouble(SisiField.getText());
+            double keliling = 6*sisi*sisi;
+            String result = String.format("Volume of the sphere with radius %.2f is %.2f", sisi, keliling);
 
             // Display the result
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -648,11 +649,11 @@ public class MainApp extends Application {
             alert.setHeaderText(null);
             alert.setContentText(result);
             alert.show();
-            saveHistory("Volume Bola - Radius: " + radius + " -> Volume: " + volume);
+            saveHistory("Keliling Kubus - Sisi: " + sisi + " -> Keliling: " + keliling);
             // Add result to history list
             historyList.add(result);
         } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "Please enter a valid number for the radius.");
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
         }
     }
     private void VolumeBalok(){
@@ -663,33 +664,46 @@ public class MainApp extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        Label JarijariLabel = new Label("Jarijari:");
+        Label JarijariLabel = new Label("Tinggi:");
         grid.add(JarijariLabel, 0, 1);
 
-        JarijariField = new TextField();
-        grid.add(JarijariField, 1, 1);
+        TinggiField = new TextField();
+        grid.add(TinggiField, 1, 1);
+
+        Label PanjangLabel = new Label("Panjang:");
+        grid.add(PanjangLabel, 0, 2);
+        PanjangField = new TextField();
+        grid.add(PanjangField, 1, 2);
+
+        Label LebarLabel = new Label("lebar:");
+        grid.add(LebarLabel, 0, 3);
+        LebarField = new TextField();
+        grid.add(LebarField, 1, 3);
 
         Button btnKembali = new Button("Kembali");
         Button btnHitung = new Button("Hitung Volume");
         Button btnHistory = new Button("Show History");
 
-        grid.add(btnHitung, 0, 2, 2, 1);
-        grid.add(btnHistory, 1, 4);
-        grid.add(btnKembali, 0, 4);
+        grid.add(btnHitung, 0, 4, 2, 1);
+        grid.add(btnHistory, 1, 6);
+        grid.add(btnKembali, 0, 6);
 
 
         btnHitung.setOnAction(e -> hitungVolumeBalok());
         btnHistory.setOnAction(e -> showHistory());
-        btnKembali.setOnAction(e -> showBola());
+        btnKembali.setOnAction(e -> showBalok());
 
         Scene scene = new Scene(grid, 400, 300);
         primaryStage.setScene(scene);
     }
     public void hitungVolumeBalok(){
         try {
-            double radius = Double.parseDouble(JarijariField.getText());
-            double volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
-            String result = String.format("Volume of the sphere with radius %.2f is %.2f", radius, volume);
+            double tinggi = Double.parseDouble(TinggiField.getText());
+            double panjang = Double.parseDouble(PanjangField.getText());
+            double lebar = Double.parseDouble(LebarField.getText());
+
+            double volume = panjang*lebar*tinggi;
+            String result = String.format("Volume balok dengan Tinggi %.2f ,Panjang %.2f, Lebar %.2f adalah %.2f", tinggi,panjang,lebar, volume);
 
             // Display the result
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -697,11 +711,11 @@ public class MainApp extends Application {
             alert.setHeaderText(null);
             alert.setContentText(result);
             alert.show();
-            saveHistory("Volume Bola - Radius: " + radius + " -> Volume: " + volume);
+            saveHistory("Volume Balok - Tinggi: " + tinggi + " - Panjang: " + panjang + " - Lebar: " + tinggi + " -> Volume: " + volume);
             // Add result to history list
             historyList.add(result);
         } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "Please enter a valid number for the radius.");
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
         }
     }
     private void KelilingBalok(){
@@ -712,33 +726,46 @@ public class MainApp extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        Label JarijariLabel = new Label("Jarijari:");
+        Label JarijariLabel = new Label("Tinggi:");
         grid.add(JarijariLabel, 0, 1);
 
-        JarijariField = new TextField();
-        grid.add(JarijariField, 1, 1);
+        TinggiField = new TextField();
+        grid.add(TinggiField, 1, 1);
+
+        Label PanjangLabel = new Label("Panjang:");
+        grid.add(PanjangLabel, 0, 2);
+        PanjangField = new TextField();
+        grid.add(PanjangField, 1, 2);
+
+        Label LebarLabel = new Label("lebar:");
+        grid.add(LebarLabel, 0, 3);
+        LebarField = new TextField();
+        grid.add(LebarField, 1, 3);
 
         Button btnKembali = new Button("Kembali");
         Button btnHitung = new Button("Hitung Volume");
         Button btnHistory = new Button("Show History");
 
-        grid.add(btnHitung, 0, 2, 2, 1);
-        grid.add(btnHistory, 1, 4);
-        grid.add(btnKembali, 0, 4);
+        grid.add(btnHitung, 0, 4, 2, 1);
+        grid.add(btnHistory, 1, 6);
+        grid.add(btnKembali, 0, 6);
 
 
         btnHitung.setOnAction(e -> hitungKelilingBalok());
         btnHistory.setOnAction(e -> showHistory());
-        btnKembali.setOnAction(e -> showBola());
+        btnKembali.setOnAction(e -> showBalok());
 
         Scene scene = new Scene(grid, 400, 300);
         primaryStage.setScene(scene);
     }
     public void hitungKelilingBalok(){
         try {
-            double radius = Double.parseDouble(JarijariField.getText());
-            double volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
-            String result = String.format("Volume of the sphere with radius %.2f is %.2f", radius, volume);
+            double tinggi = Double.parseDouble(TinggiField.getText());
+            double panjang = Double.parseDouble(PanjangField.getText());
+            double lebar = Double.parseDouble(LebarField.getText());
+
+            double volume = 2*(panjang+lebar+tinggi);
+            String result = String.format("Volume balok dengan Tinggi %.2f ,Panjang %.2f, Lebar %.2f adalah %.2f", tinggi,panjang,lebar, volume);
 
             // Display the result
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -746,11 +773,11 @@ public class MainApp extends Application {
             alert.setHeaderText(null);
             alert.setContentText(result);
             alert.show();
-            saveHistory("Volume Bola - Radius: " + radius + " -> Volume: " + volume);
+            saveHistory("Volume Balok - Tinggi: " + tinggi + " - Panjang: " + panjang + " - Lebar: " + tinggi + " -> Volume: " + volume);
             // Add result to history list
             historyList.add(result);
         } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "Please enter a valid number for the radius.");
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
         }
     }
     private void VolumeBola(){
@@ -785,9 +812,9 @@ public class MainApp extends Application {
     }
     public void hitungVolumeBola(){
         try {
-            double radius = Double.parseDouble(JarijariField.getText());
-            double volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
-            String result = String.format("Volume of the sphere with radius %.2f is %.2f", radius, volume);
+            double jarijari = Double.parseDouble(JarijariField.getText());
+            double volume = (4.0 / 3.0) * Math.PI * Math.pow(jarijari, 3);
+            String result = String.format("Volume bola dengan radius %.2f adalah %.2f", jarijari, volume);
 
             // Display the result
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -795,11 +822,11 @@ public class MainApp extends Application {
             alert.setHeaderText(null);
             alert.setContentText(result);
             alert.show();
-            saveHistory("Volume Bola - Radius: " + radius + " -> Volume: " + volume);
+            saveHistory("Volume Bola - jarijari: " + jarijari + " -> Volume: " + volume);
             // Add result to history list
             historyList.add(result);
         } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "Please enter a valid number for the radius.");
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
         }
     }
     private void KelilingBola(){
@@ -834,9 +861,9 @@ public class MainApp extends Application {
     }
     public void hitungKelilingBola(){
         try {
-            double radius = Double.parseDouble(JarijariField.getText());
-            double volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
-            String result = String.format("Volume of the sphere with radius %.2f is %.2f", radius, volume);
+            double jariJari = Double.parseDouble(JarijariField.getText());
+            double keliling = ((4 / 3) * Math.PI * (jariJari * jariJari * jariJari));
+            String result = String.format("Volume of the sphere with radius %.2f is %.2f", jariJari, keliling);
 
             // Display the result
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -844,11 +871,11 @@ public class MainApp extends Application {
             alert.setHeaderText(null);
             alert.setContentText(result);
             alert.show();
-            saveHistory("Volume Bola - Radius: " + radius + " -> Volume: " + volume);
+            saveHistory("Keliling Bola - Jarijari: " + jariJari + " -> Volume: " + keliling);
             // Add result to history list
             historyList.add(result);
         } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "Please enter a valid number for the radius.");
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
         }
     }
 
