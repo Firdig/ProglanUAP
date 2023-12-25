@@ -1,0 +1,2 @@
+Volume Bola - Radius: 32.0 -> Volume: 137258.27743044044
+Luas Persegi - Sisi: 23.0 -> Luas: 92.0
