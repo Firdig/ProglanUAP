@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.*;
+import java.util.InputMismatchException;
 
 public class MainApp extends Application {
     private ObservableList<String> historyList = FXCollections.observableArrayList();
@@ -212,6 +213,9 @@ public class MainApp extends Application {
     public void hitungLuasPersegi(){
         try {
             double sisi = Double.parseDouble(SisiField.getText());
+            if (sisi <= 0 || sisi >= 10000) {
+                throw new InputMismatchException("sisi harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
             double luas = sisi * sisi;
             String result = String.format("Luas dari persegi dengan sisi %.2f is %.2f", sisi, luas);
 
@@ -224,8 +228,8 @@ public class MainApp extends Application {
             saveHistory("Luas Persegi - Sisi: " + sisi + " -> Luas: " + luas);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        }catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk sisi (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
     private void KelilingPersegi(){
@@ -260,6 +264,9 @@ public class MainApp extends Application {
     public void hitungKelilingPersegi(){
         try {
             double sisi = Double.parseDouble(SisiField.getText());
+            if (sisi <= 0 || sisi >= 10000) {
+                throw new InputMismatchException("sisi harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
             double luas = (4 * sisi);
             String result = String.format("Luas dari persegi dengan sisi %.2f is %.2f", sisi, luas);
 
@@ -272,8 +279,8 @@ public class MainApp extends Application {
             saveHistory("Luas Persegi - Sisi: " + sisi + " -> Luas: " + luas);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk sisi (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
     private void LuasPersegiPanjang(){
@@ -314,6 +321,12 @@ public class MainApp extends Application {
         try {
             double panjang = Double.parseDouble(PanjangField.getText());
             double lebar = Double.parseDouble(LebarField.getText());
+            if (panjang <= 0 || panjang >= 10000) {
+                throw new InputMismatchException("panjang harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
+            if (lebar <= 0 || lebar >= 10000) {
+                throw new InputMismatchException("lebar harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
             double luas = panjang * lebar;
             String result = String.format("Volume of the sphere with lebar %.2f & panjang %.2f is %.2f", panjang,lebar, luas);
 
@@ -326,8 +339,8 @@ public class MainApp extends Application {
             saveHistory("Luas PersegiPanjang - Panjang: " + panjang + " & Luas: "+ lebar+ " -> Volume: " + luas);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk panjang dan lebar (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
     private void KelilingPersegiPanjang(){
@@ -352,9 +365,9 @@ public class MainApp extends Application {
         Button btnHitung = new Button("Hitung Keliling");
         Button btnHistory = new Button("Show History");
 
-        grid.add(btnHitung, 0, 2, 2, 1);
-        grid.add(btnHistory, 1, 4);
-        grid.add(btnKembali, 0, 4);
+        grid.add(btnHitung, 0, 3, 2, 1);
+        grid.add(btnHistory, 1, 5);
+        grid.add(btnKembali, 0, 5);
 
 
         btnHitung.setOnAction(e -> hitungKelilingPersegiPanjang());
@@ -368,6 +381,12 @@ public class MainApp extends Application {
         try {
             double panjang = Double.parseDouble(PanjangField.getText());
             double lebar = Double.parseDouble(LebarField.getText());
+            if (panjang <= 0 || panjang >= 10000) {
+                throw new InputMismatchException("panjang harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
+            if (lebar <= 0 || lebar >= 10000) {
+                throw new InputMismatchException("lebar harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
             double luas = 2 * (panjang + lebar);
             String result = String.format("Volume of the sphere with radius %.2f & lebar %.2f is %.2f", panjang,lebar, luas);
 
@@ -380,8 +399,8 @@ public class MainApp extends Application {
             saveHistory("Keliling PersegPanjang - Panjang: " + panjang + " & Luas: "+ lebar+ " -> Volume: " + luas);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk panjang dan lebar (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
     private void LuasLingkaran(){
@@ -417,6 +436,9 @@ public class MainApp extends Application {
     public void hitungLuasLingkaran(){
         try {
             double jariJari = Double.parseDouble(JarijariField.getText());
+            if (jariJari <= 0 || jariJari >= 10000) {
+                throw new InputMismatchException("Jarijari harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
             double luas = (Math.PI * jariJari * jariJari);
             String result = String.format("Luas dari Lingkaran dengan Jarijari : %.2f adalah %.2f", jariJari, luas);
 
@@ -429,8 +451,8 @@ public class MainApp extends Application {
             saveHistory("Keliling Lingkaran - Jari-jari: " + jariJari + " -> Keliling: " + luas);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk JariJari (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
     private void KelilingLingkaran(){
@@ -466,6 +488,9 @@ public class MainApp extends Application {
     public void hitungKelilingLingkaran(){
         try {
             double jariJari = Double.parseDouble(JarijariField.getText());
+            if (jariJari <= 0 || jariJari >= 10000) {
+                throw new InputMismatchException("Jarijari harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
             double keliling = (2 * Math.PI * jariJari);
             String result = String.format("Keliling dari Lingkaran dengan Jarijari : %.2f adalah %.2f", jariJari, keliling);
 
@@ -478,8 +503,8 @@ public class MainApp extends Application {
             saveHistory("Keliling Lingkaran - Jari-jari: " + jariJari + " -> Keliling: " + keliling);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk JariJari (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
 
@@ -591,6 +616,9 @@ public class MainApp extends Application {
     public void hitungVolumeKubus(){
         try {
             double sisi = Double.parseDouble(SisiField.getText());
+            if (sisi <= 0 || sisi >= 10000) {
+                throw new InputMismatchException("sisi harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
             double volume = sisi*sisi*sisi;
             String result = String.format("Volume Kubus dengan Sisi %.2f Adalah %.2f", sisi, volume);
 
@@ -603,8 +631,8 @@ public class MainApp extends Application {
             saveHistory("Volume Kubus - Sisi: " + sisi + " -> Volume: " + volume);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk sisi (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
     private void KelilingKubus(){
@@ -640,6 +668,10 @@ public class MainApp extends Application {
     public void hitungKelilingKubus(){
         try {
             double sisi = Double.parseDouble(SisiField.getText());
+            if (sisi <= 0 || sisi >= 10000) {
+                throw new InputMismatchException("sisi harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
+
             double keliling = 6*sisi*sisi;
             String result = String.format("Volume of the sphere with radius %.2f is %.2f", sisi, keliling);
 
@@ -652,8 +684,8 @@ public class MainApp extends Application {
             saveHistory("Keliling Kubus - Sisi: " + sisi + " -> Keliling: " + keliling);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk sisi (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
     private void VolumeBalok(){
@@ -701,6 +733,15 @@ public class MainApp extends Application {
             double tinggi = Double.parseDouble(TinggiField.getText());
             double panjang = Double.parseDouble(PanjangField.getText());
             double lebar = Double.parseDouble(LebarField.getText());
+            if (tinggi <= 0 || tinggi >= 10000) {
+                throw new InputMismatchException("tinggi harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
+            if (panjang <= 0 || panjang >= 10000) {
+                throw new InputMismatchException("panjang harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
+            if (lebar <= 0 || lebar >= 10000) {
+                throw new InputMismatchException("lebar harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
 
             double volume = panjang*lebar*tinggi;
             String result = String.format("Volume balok dengan Tinggi %.2f ,Panjang %.2f, Lebar %.2f adalah %.2f", tinggi,panjang,lebar, volume);
@@ -714,8 +755,8 @@ public class MainApp extends Application {
             saveHistory("Volume Balok - Tinggi: " + tinggi + " - Panjang: " + panjang + " - Lebar: " + tinggi + " -> Volume: " + volume);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk tinggi,panjang dan lebar (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
     private void KelilingBalok(){
@@ -763,7 +804,15 @@ public class MainApp extends Application {
             double tinggi = Double.parseDouble(TinggiField.getText());
             double panjang = Double.parseDouble(PanjangField.getText());
             double lebar = Double.parseDouble(LebarField.getText());
-
+            if (tinggi <= 0 || tinggi >= 10000) {
+                throw new InputMismatchException("tinggi harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
+            if (panjang <= 0 || panjang >= 10000) {
+                throw new InputMismatchException("panjang harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
+            if (lebar <= 0 || lebar >= 10000) {
+                throw new InputMismatchException("lebar harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
             double volume = 2*(panjang+lebar+tinggi);
             String result = String.format("Volume balok dengan Tinggi %.2f ,Panjang %.2f, Lebar %.2f adalah %.2f", tinggi,panjang,lebar, volume);
 
@@ -776,8 +825,8 @@ public class MainApp extends Application {
             saveHistory("Volume Balok - Tinggi: " + tinggi + " - Panjang: " + panjang + " - Lebar: " + tinggi + " -> Volume: " + volume);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk tinggi,panjang dan lebar (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
     private void VolumeBola(){
@@ -813,6 +862,9 @@ public class MainApp extends Application {
     public void hitungVolumeBola(){
         try {
             double jarijari = Double.parseDouble(JarijariField.getText());
+            if (jarijari <= 0 || jarijari >= 10000) {
+                throw new InputMismatchException("Jarijari harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
             double volume = (4.0 / 3.0) * Math.PI * Math.pow(jarijari, 3);
             String result = String.format("Volume bola dengan radius %.2f adalah %.2f", jarijari, volume);
 
@@ -825,8 +877,8 @@ public class MainApp extends Application {
             saveHistory("Volume Bola - jarijari: " + jarijari + " -> Volume: " + volume);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Jari-jari (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
     private void KelilingBola(){
@@ -862,6 +914,9 @@ public class MainApp extends Application {
     public void hitungKelilingBola(){
         try {
             double jariJari = Double.parseDouble(JarijariField.getText());
+            if (jariJari <= 0 || jariJari >= 10000) {
+                throw new InputMismatchException("Jarijari harus lebih dari 0 dan tidak boleh dari 10000. Silakan coba lagi.");
+            }
             double keliling = ((4 / 3) * Math.PI * (jariJari * jariJari * jariJari));
             String result = String.format("Volume of the sphere with radius %.2f is %.2f", jariJari, keliling);
 
@@ -874,8 +929,8 @@ public class MainApp extends Application {
             saveHistory("Keliling Bola - Jarijari: " + jariJari + " -> Volume: " + keliling);
             // Add result to history list
             historyList.add(result);
-        } catch (NumberFormatException ex) {
-            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk Sisi.");
+        } catch (InputMismatchException | NumberFormatException ex) {
+            showAlert("Invalid Input", "mohon masukkan nomor yang valid untuk JariJari (nomor tidak boleh kurang dari 0 dan tidak boleh dari 9999.");
         }
     }
 

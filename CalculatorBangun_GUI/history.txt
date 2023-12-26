@@ -4,3 +4,15 @@ Luas Persegi - Sisi: 20.0 -> Luas: 400.0
 Luas PersegiPanjang - Panjang: 20.0 & Luas: 30.0 -> Volume: 600.0
 Volume Balok - Tinggi: 23.0 - Panjang: 30.0 - Lebar: 23.0 -> Volume: 13800.0
 Volume Balok - Tinggi: 20.0 - Panjang: 30.0 - Lebar: 20.0 -> Volume: 140.0
+Luas Persegi - Sisi: 1.0 -> Luas: 1.0
+Luas Persegi - Sisi: 3.0 -> Luas: 9.0
+Luas Persegi - Sisi: 3.0 -> Luas: 9.0
+Luas Persegi - Sisi: 3.0 -> Luas: 12.0
+Luas PersegiPanjang - Panjang: 2.0 & Luas: 2.0 -> Volume: 4.0
+Keliling PersegPanjang - Panjang: 1.0 & Luas: 1.0 -> Volume: 4.0
+Volume Kubus - Sisi: 1.0 -> Volume: 1.0
+Keliling Kubus - Sisi: 1.0 -> Keliling: 6.0
+Keliling Kubus - Sisi: 1.0 -> Keliling: 6.0
+Volume Balok - Tinggi: 1.0 - Panjang: 1.0 - Lebar: 1.0 -> Volume: 1.0
+Volume Balok - Tinggi: 818.0 - Panjang: 81.0 - Lebar: 818.0 -> Volume: 1800.0
+Volume Bola - jarijari: 1.0 -> Volume: 4.1887902047863905
