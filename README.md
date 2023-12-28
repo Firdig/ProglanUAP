@@ -24,17 +24,17 @@ Menghitung keliling.
 Kubus:
 
 Menghitung volume.
-Menghitung luas permukaan.
+Menghitung Keliling.
 
 Balok:
 
 Menghitung volume.
-Menghitung luas permukaan.
+Menghitung Keliling.
 
 Bola:
 
 Menghitung volume.
-Menghitung luas permukaan.
+Menghitung Keliling.
 
 Penggunaan
 
@@ -56,7 +56,7 @@ Program ini menerapkan beberapa aturan terkait dengan input pengguna untuk memas
 
 Sisi, Panjang, Lebar, Tinggi, dan Jari-Jari:
 
-Harus lebih dari 0. Input dengan nilai 0 atau kurang tidak diperbolehkan.
+Harus lebih dari 0 dan maksimal 9999. Input dengan nilai 0 ,kuran dari 0 dan lebih dari 9999 tidak diperbolehkan.
 Menu Pilihan:
 
 Hanya menerima input berupa angka sesuai dengan pilihan yang tersedia pada menu.
