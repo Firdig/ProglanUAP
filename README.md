@@ -10,7 +10,7 @@ Program Java ini, bernama BangunDatarRuang, merupakan aplikasi berbasis konsol y
 3. Jalankan program tersebut
 
 
-#<H2>**FITUR**</H2>
+<H2>**FITUR**</H2>
 
 1. Bangun Datar (Bentuk Dua Dimensi)
 
@@ -44,7 +44,7 @@ Bola:
 Menghitung volume.
 Menghitung Keliling.
 
-#<H2>**PENGGUNAAN**</H2>
+<H2>**PENGGUNAAN**</H2>
 
 - Program menyediakan menu utama dengan opsi untuk memilih antara bentuk dua dimensi, bentuk tiga dimensi, atau keluar dari program.
 
@@ -58,7 +58,7 @@ Menghitung Keliling.
 
 Program menggunakan BufferedWriter untuk menambahkan hasil ke file history.txt. Setiap entri dalam file mencakup informasi tentang kategori (Bangun Datar atau Bangun Ruang), bentuk spesifik, jenis perhitungan (Luas atau Keliling), dan hasil perhitungan.
 
-#<H2>**LARANGAN INPUT**</H2>
+<H2>**LARANGAN INPUT**</H2>
 
 Program ini menerapkan beberapa aturan terkait dengan input pengguna untuk memastikan perhitungan yang benar dan mencegah kesalahan. Berikut adalah larangan-larangan yang harus dihindari:
 
